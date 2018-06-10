@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.rabia.seasonalclone.CustomItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,6 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/ivItemImg"
         android:orientation="vertical"
         android:padding="20dp">
@@ -36,5 +38,18 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             tools:text="Fruit" />
+
     </LinearLayout>
-</RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvItemDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivItemImg"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"
+        tools:text="Apricots are a stone fruit in the same family as plums, cherries, peaches and almonds. The flesh of the apricot is usually firm and not very juicy and its taste can range from sweet to tart. Raw apricots are a moderate source of vitamin A and vitamin C. When apricots are dried, the relative concentration of nutrients is increased, and they become a rich source of  vitamin A, vitamin E, potassium and iron." />
+
+</com.example.rabia.seasonalclone.CustomItemView>

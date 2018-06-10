@@ -4,12 +4,8 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.example.rabia.seasonalclone.GlideApp
-import com.example.rabia.seasonalclone.R
-import com.example.rabia.seasonalclone.inflate
+import com.example.rabia.seasonalclone.*
 import com.example.rabia.seasonalclone.models.ProduceItem
-import kotlinx.android.synthetic.main.item_header.view.*
-import kotlinx.android.synthetic.main.item_produce.view.*
 
 class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val fruitsCount: Int, val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -19,11 +15,15 @@ class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if (viewType == 0) {
-            return ViewHolderHeader(context.inflate(R.layout.item_header, parent, false)) //Extention method was used
+            val view = CustomHeaderView.inflate(parent)
+            return SimpleViewHolder(view)
+            //return ViewHolderHeader(context.inflate(R.layout.item_header, parent, false)) //Extention method was used
 
         } else {
-            return ViewHolderItem(context.inflate(R.layout.item_produce, parent, false)) //Extention method was used
-            //LayoutInflater.from(context).inflate(R.layout.item_produce, parent, false))
+            val view = CustomItemView.inflate(parent)  //With custom view
+            return SimpleViewHolder(view)
+            //return ViewHolderItem(context.inflate(R.layout.item_produce, parent, false)) //Extention method was used
+            //LayoutInflater.from(context).inflate(R.layout.item_produce, parent, false)) // Simple implementation
         }
     }
 
@@ -48,27 +48,28 @@ class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val 
         when (holder.getItemViewType()) {
             VIEW_TYPE_ITEM -> {
 
-                val viewHolderItem: ViewHolderItem = holder as ViewHolderItem
+                val viewHolderItem: SimpleViewHolder<CustomItemView> = holder as SimpleViewHolder<CustomItemView>
 
                 GlideApp.with(context)
                         .load(items.get(position - 1).itemImgUrl)
-                        .into(viewHolderItem?.ivItemImg)
+                        .into(viewHolderItem?.view.ivItemImg)
 
-                viewHolderItem?.tvItemName?.text = items.get(position - 1).itemName
-                viewHolderItem?.tvItemType?.text = items.get(position - 1).itemType
+                viewHolderItem?.view.tvItemName?.text = items.get(position - 1).itemName
+                viewHolderItem?.view.tvItemType?.text = items.get(position - 1).itemType
+                //viewHolderItem?.tvItemDesc?.text = items.get(position - 1).itemDesc
             }
             else -> {
-                val viewHolderHeader: ViewHolderHeader = holder as ViewHolderHeader
-                if (position == 0) viewHolderHeader.tvTitle?.text = "New Season";
-                else if (position == newItemsCount + 1) viewHolderHeader.tvTitle?.text = "Fruits"
-                else viewHolderHeader.tvTitle?.text = "Vegetables";
+                val viewHolderHeader: SimpleViewHolder<CustomHeaderView> = holder as SimpleViewHolder<CustomHeaderView>
+                if (position == 0) viewHolderHeader.view.tvHeader?.text = "New Season";
+                else if (position == newItemsCount + 1) viewHolderHeader.view.tvHeader?.text = "Fruits"
+                else viewHolderHeader.view.tvHeader?.text = "Veggies";
             }
         }
     }
 
 }
 
-class ViewHolderHeader(view: View) : RecyclerView.ViewHolder(view) {
+/*class ViewHolderHeader(view: View) : RecyclerView.ViewHolder(view) {
     val tvTitle = view.tvTitle
 }
 
@@ -76,4 +77,12 @@ class ViewHolderItem(view: View) : RecyclerView.ViewHolder(view) {
     val tvItemName = view.tvItemName
     val tvItemType = view.tvItemtype
     val ivItemImg = view.ivItemImg
+    val tvItemDesc = view.tvItemDesc
+}*/
+
+/* Instead of calling different custom viewholders, we are calling generic SimpleViewHolder */
+class SimpleViewHolder<out T : View>(itemView: T)
+    : RecyclerView.ViewHolder(itemView) {
+    val view: T
+        get() = itemView as T
 }
