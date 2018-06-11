@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.rabia.seasonalclone.CustomHeaderView
+<com.example.rabia.seasonalclone.customviews.CustomHeaderView
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -15,4 +15,4 @@
         android:textStyle="bold|italic"
         tools:text="Fruits" />
 
-</com.example.rabia.seasonalclone.CustomHeaderView>
+</com.example.rabia.seasonalclone.customviews.CustomHeaderView>

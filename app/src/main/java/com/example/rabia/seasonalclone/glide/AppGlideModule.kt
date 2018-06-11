@@ -1,4 +1,4 @@
-package com.example.rabia.seasonalclone
+package com.example.rabia.seasonalclone.glide
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule

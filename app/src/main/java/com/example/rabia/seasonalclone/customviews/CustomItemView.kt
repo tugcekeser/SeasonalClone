@@ -1,4 +1,4 @@
-package com.example.rabia.seasonalclone
+package com.example.rabia.seasonalclone.customviews
 
 import android.content.Context
 import android.net.Uri
@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.example.rabia.seasonalclone.R
 import com.example.rabia.seasonalclone.butterknife.bindView
+import com.example.rabia.seasonalclone.extensions.inflate
 import com.example.rabia.seasonalclone.models.ProduceItem
 
 

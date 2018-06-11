@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.rabia.seasonalclone.CustomItemView
+<com.example.rabia.seasonalclone.customviews.CustomItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -50,6 +50,7 @@
         android:paddingRight="20dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
+        android:visibility="gone"
         tools:text="Apricots are a stone fruit in the same family as plums, cherries, peaches and almonds. The flesh of the apricot is usually firm and not very juicy and its taste can range from sweet to tart. Raw apricots are a moderate source of vitamin A and vitamin C. When apricots are dried, the relative concentration of nutrients is increased, and they become a rich source of  vitamin A, vitamin E, potassium and iron." />
 
-</com.example.rabia.seasonalclone.CustomItemView>
+</com.example.rabia.seasonalclone.customviews.CustomItemView>

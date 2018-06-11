@@ -1,4 +1,4 @@
-package com.example.rabia.seasonalclone
+package com.example.rabia.seasonalclone.extensions
 
 import android.content.Context
 import android.support.annotation.LayoutRes

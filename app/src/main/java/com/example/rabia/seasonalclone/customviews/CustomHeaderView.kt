@@ -1,11 +1,13 @@
-package com.example.rabia.seasonalclone
+package com.example.rabia.seasonalclone.customviews
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.rabia.seasonalclone.R
 import com.example.rabia.seasonalclone.butterknife.bindView
+import com.example.rabia.seasonalclone.extensions.inflate
 
 class CustomHeaderView @JvmOverloads constructor(
         context: Context,

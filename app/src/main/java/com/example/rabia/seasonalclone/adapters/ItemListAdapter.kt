@@ -4,10 +4,13 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.example.rabia.seasonalclone.*
+import com.example.rabia.seasonalclone.customviews.CustomHeaderView
+import com.example.rabia.seasonalclone.customviews.CustomItemView
+import com.example.rabia.seasonalclone.glide.GlideApp
 import com.example.rabia.seasonalclone.models.ProduceItem
 
-class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val fruitsCount: Int, val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val header: String,
+                      val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val VIEW_TYPE_TITLE = 0
     val VIEW_TYPE_ITEM = 1
@@ -29,13 +32,13 @@ class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val 
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
-        return items.size + 2
+        return items.size + 1
     }
 
 
     override fun getItemViewType(position: Int): Int {
 
-        if (position == 0 || position == newItemsCount + 1 || position == (newItemsCount + fruitsCount + 2)) {
+        if (position == 0 || position == newItemsCount + 1) {
             return VIEW_TYPE_TITLE;
         } else {
             return VIEW_TYPE_ITEM;
@@ -61,8 +64,7 @@ class ItemListAdapter(val items: List<ProduceItem>, val newItemsCount: Int, val 
             else -> {
                 val viewHolderHeader: SimpleViewHolder<CustomHeaderView> = holder as SimpleViewHolder<CustomHeaderView>
                 if (position == 0) viewHolderHeader.view.tvHeader?.text = "New Season";
-                else if (position == newItemsCount + 1) viewHolderHeader.view.tvHeader?.text = "Fruits"
-                else viewHolderHeader.view.tvHeader?.text = "Veggies";
+                else if (position == newItemsCount + 1) viewHolderHeader.view.tvHeader?.text = header
             }
         }
     }
